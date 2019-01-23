@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "UAP,Version=v10.0.17134": {
+    "UAP,Version=v10.0.16299": {
       "Microsoft.Net.Native.Compiler/2.2.1": {
         "type": "package",
         "dependencies": {
@@ -373,7 +373,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.17134/win10-arm": {
+    "UAP,Version=v10.0.16299/win10-arm": {
       "Microsoft.Net.Native.Compiler/2.2.1": {
         "type": "package",
         "dependencies": {
@@ -877,7 +877,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.17134/win10-arm-aot": {
+    "UAP,Version=v10.0.16299/win10-arm-aot": {
       "Microsoft.Net.Native.Compiler/2.2.1": {
         "type": "package",
         "dependencies": {
@@ -1382,7 +1382,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.17134/win10-arm64-aot": {
+    "UAP,Version=v10.0.16299/win10-arm64-aot": {
       "Microsoft.Net.Native.Compiler/2.2.1": {
         "type": "package",
         "dependencies": {
@@ -1887,7 +1887,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.17134/win10-x64": {
+    "UAP,Version=v10.0.16299/win10-x64": {
       "Microsoft.Net.Native.Compiler/2.2.1": {
         "type": "package",
         "dependencies": {
@@ -2391,7 +2391,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.17134/win10-x64-aot": {
+    "UAP,Version=v10.0.16299/win10-x64-aot": {
       "Microsoft.Net.Native.Compiler/2.2.1": {
         "type": "package",
         "dependencies": {
@@ -2896,7 +2896,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.17134/win10-x86": {
+    "UAP,Version=v10.0.16299/win10-x86": {
       "Microsoft.Net.Native.Compiler/2.2.1": {
         "type": "package",
         "dependencies": {
@@ -3400,7 +3400,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.17134/win10-x86-aot": {
+    "UAP,Version=v10.0.16299/win10-x86-aot": {
       "Microsoft.Net.Native.Compiler/2.2.1": {
         "type": "package",
         "dependencies": {
@@ -8344,47 +8344,47 @@
     }
   },
   "projectFileDependencyGroups": {
-    "UAP,Version=v10.0.17134": [
+    "UAP,Version=v10.0.16299": [
       "Microsoft.NETCore.UniversalWindowsPlatform >= 6.2.3",
       "Microsoft.UI.Xaml >= 2.1.181217001-prerelease"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Chazaaam\\.nuget\\packages\\": {},
+    "C:\\Users\\User\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Chazaaam\\source\\repos\\Weinkeller\\Weinkeller\\Weinkeller.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Documents\\GitHub\\Weinkeller\\Weinkeller\\Weinkeller.csproj",
       "projectName": "Weinkeller",
-      "projectPath": "C:\\Users\\Chazaaam\\source\\repos\\Weinkeller\\Weinkeller\\Weinkeller.csproj",
-      "packagesPath": "C:\\Users\\Chazaaam\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Chazaaam\\source\\repos\\Weinkeller\\Weinkeller\\obj\\",
+      "projectPath": "C:\\Users\\User\\Documents\\GitHub\\Weinkeller\\Weinkeller\\Weinkeller.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Documents\\GitHub\\Weinkeller\\Weinkeller\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Chazaaam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "uap10.0.17134"
+        "uap10.0.16299"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "uap10.0.17134": {
+        "uap10.0.16299": {
           "projectReferences": {}
         }
       }
     },
     "frameworks": {
-      "uap10.0.17134": {
+      "uap10.0.16299": {
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": {
             "target": "Package",

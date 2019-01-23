@@ -6,28 +6,41 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded" RequestedTheme="Light">
 
-    <Grid>
-        <ListView HorizontalAlignment="Left" Height="1070" Margin="0,0,0,0" VerticalAlignment="Top" Width="1308">
-            <TextBlock Text="Name:" TextWrapping="Wrap" FontSize="48" Margin="20,0,0,0" FontWeight="Bold"/>
-            <TextBlock x:Name="txt_name" Text="_name_" TextWrapping="Wrap" FontSize="48" Margin="100,0,0,10"/>
-            <TextBlock Text="Detail Name:" TextWrapping="Wrap" FontSize="48" Margin="20,0,0,0" FontWeight="Bold"/>
-            <TextBlock x:Name="txt_detailname" Text="_detailname_" TextWrapping="Wrap" FontSize="48" Margin="100,0,0,10"/>
-            <TextBlock Text="Barcode:" TextWrapping="Wrap" FontSize="48" Margin="20,0,0,0" FontWeight="Bold"/>
-            <TextBlock x:Name="txt_barcode" Text="_barcode_" TextWrapping="Wrap" FontSize="48" Margin="100,0,0,10"/>
-            <TextBlock Text="Lieferant:" TextWrapping="Wrap" FontSize="48" Margin="20,0,0,0" FontWeight="Bold"/>
-            <TextBlock x:Name="txt_lieferant" Text="_lieferant_" TextWrapping="Wrap" FontSize="48" Margin="100,0,0,10"/>
-            <TextBlock Text="Ursprung:" TextWrapping="Wrap" FontSize="48" Margin="20,0,0,0" FontWeight="Bold"/>
-            <TextBlock x:Name="txt_ursprung" Text="_ursprung_" TextWrapping="Wrap" FontSize="48" Margin="100,0,0,10"/>
-            <TextBlock Text="Anzahl:" TextWrapping="Wrap" FontSize="48" Margin="20,0,0,0" FontWeight="Bold"/>
-            <TextBlock x:Name="txt_anzahl" Text="_anzahl_" TextWrapping="Wrap" FontSize="48" Margin="100,0,0,10"/>
-            <TextBlock Text="Beschreibung:" TextWrapping="Wrap" FontSize="48" Margin="20,0,0,0" FontWeight="Bold"/>
-            <TextBlock x:Name="txt_beschreibung" Text="_beschreibung_
-                       " TextWrapping="Wrap" FontSize="48" Margin="100,0,0,10"/>
-        </ListView>
-        <Image HorizontalAlignment="Left" Height="1060" Margin="1313,7,0,0" VerticalAlignment="Top" Width="597" Source="/Assets/kein-bild-vorhanden.png" Stretch="Uniform"/>
+    <Grid x:Name="MainGrid" HorizontalAlignment="Center" Height="1080" Margin="0,0,0,0" VerticalAlignment="Center" Width="1920">
+        <Grid x:Name="InfoGrid" HorizontalAlignment="Left" Height="980" VerticalAlignment="Top" Width="1298" Margin="50,50,0,0">
+            <TextBox x:Name="Text_Name" HorizontalAlignment="Left" Margin="50,-10,0,0" Text="_Name_" VerticalAlignment="Top" Width="869" FontSize="36" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" FontWeight="Bold" FontFamily="Georgia"/>
+            <TextBlock x:Name="text_barcode" HorizontalAlignment="Left" Margin="1022,0,0,939" Text="_barcode_" TextWrapping="Wrap" VerticalAlignment="Bottom" FontSize="36" FontFamily="Georgia"/>
+            <TextBlock HorizontalAlignment="Left" Margin="50,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Flaschen auf Lager:" FontFamily="Georgia"/>
+            <TextBox HorizontalAlignment="Left" Margin="476,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="_Anzahl_" Width="754" FontFamily="Georgia"/>
+            <TextBlock HorizontalAlignment="Left" Margin="50,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Verkäufer:" FontFamily="Georgia"/>
+            <TextBox HorizontalAlignment="Left" Margin="476,321,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="_Verkäufer" Width="754" FontFamily="Georgia"/>
+            <TextBlock HorizontalAlignment="Left" Margin="50,461,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Herkunft:" FontFamily="Georgia"/>
+            <TextBox HorizontalAlignment="Left" Margin="476,467,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="_Herkunft_" Width="754" FontFamily="Georgia"/>
+            <TextBlock HorizontalAlignment="Left" Margin="50,602,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Beschreibung:" FontFamily="Georgia"/>
+            <TextBox HorizontalAlignment="Left" Margin="476,614,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="_Beschreibung_" Width="754" FontFamily="Georgia"/>
+            <Rectangle HorizontalAlignment="Left" Height="8" Margin="34,116,0,0" VerticalAlignment="Top" Width="1196" StrokeThickness="3">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+        <Button x:Name="btn_save" Content="Speichern" HorizontalAlignment="Left" Margin="1510,853,0,0" VerticalAlignment="Top" Height="153" Width="313" FontSize="36" Click="Btn_save_Click"/>
+        <Button x:Name="btn_scan" Content="Barcode scannen" HorizontalAlignment="Left" Margin="1510,628,0,0" VerticalAlignment="Top" Height="153" Width="313" FontSize="36" Click="Btn_scan_Click"/>
 
+        <Button Content="Test Wein Anlegen&#xD;&#xA;" HorizontalAlignment="Left" Margin="1540,87,0,0" VerticalAlignment="Top" Height="111" Width="253" Click="Button_Click"/>
+        <Grid x:Name="ScanningGrid" HorizontalAlignment="Center" Height="1080" Margin="0,0,0,0" VerticalAlignment="Center" Width="1920" Background="#D8C3C3C3">
+            <TextBlock HorizontalAlignment="Center" Margin="0,435,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="_ScannerStatus_" FontFamily="Georgia"/>
+            <Button x:Name="btn_scanner_stop" Content="Scannen abbrechen" HorizontalAlignment="Center" Margin="0,570,0,0" VerticalAlignment="Top" Height="153" Width="366" FontSize="36" Click="Btn_save_Click" Background="#FF5F5E5E"/>
 
+        </Grid>
     </Grid>
+
+
+
+
 </Page>

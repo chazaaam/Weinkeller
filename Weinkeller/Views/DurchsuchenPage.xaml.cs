@@ -5,12 +5,14 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // Die Elementvorlage "Leere Seite" wird unter https://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
@@ -20,11 +22,150 @@ namespace Weinkeller.Views
     /// <summary>
     /// Eine leere Seite, die eigenständig verwendet oder zu der innerhalb eines Rahmens navigiert werden kann.
     /// </summary>
-    public sealed partial class Durchsuchen : Page
+    public sealed partial class DurchsuchenPage : Page
     {
-        public Durchsuchen()
+        List<Wein> WeinList = new List<Wein>();
+
+        int currentWein;
+
+        public DurchsuchenPage()
         {
             this.InitializeComponent();
         }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_search_Click(object sender, RoutedEventArgs e)
+        {
+            Load_data();
+            grid_search.Visibility = Visibility.Visible;
+        }
+
+        private async void Load_data()
+        {
+            string temp_barcode;
+            string temp_name;
+            string temp_detailname;
+            string temp_vendor;
+            string temp_origin;
+            string temp_descr;
+            int temp_quantity;
+
+            string temp_string;
+
+            List<string> filenameList = new List<string>();
+            StorageFolder dataFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+
+            IReadOnlyList<StorageFile> fileList = await dataFolder.GetFilesAsync();
+
+            foreach (StorageFile file in fileList)
+            {
+                filenameList.Add(file.Name);
+            }
+
+            for (int i = 0; i < filenameList.Count; i++)
+            {
+
+
+                Windows.Storage.StorageFolder storageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+                Windows.Storage.StorageFile sampleFile = await storageFolder.GetFileAsync(filenameList[i]);
+
+                string text = await Windows.Storage.FileIO.ReadTextAsync(sampleFile);
+
+                temp_barcode = text.Substring(0, text.IndexOf(";"));
+                temp_string = text.Substring(text.IndexOf(";") + 1);
+                temp_name = temp_string.Substring(0, temp_string.IndexOf(";"));
+                temp_string = temp_string.Substring(temp_string.IndexOf(";") + 1);
+                temp_detailname = temp_string.Substring(0, temp_string.IndexOf(";"));
+                temp_string = temp_string.Substring(temp_string.IndexOf(";") + 1);
+                temp_vendor = temp_string.Substring(0, temp_string.IndexOf(";"));
+                temp_string = temp_string.Substring(temp_string.IndexOf(";") + 1);
+                temp_origin = temp_string.Substring(0, temp_string.IndexOf(";"));
+                temp_string = temp_string.Substring(temp_string.IndexOf(";") + 1);
+                temp_descr = temp_string.Substring(0, temp_string.IndexOf(";"));
+                temp_string = temp_string.Substring(temp_string.IndexOf(";") + 1);
+                temp_quantity = Convert.ToInt32(temp_string);
+
+                if (Text_Name.Text == "" || temp_name.Contains(Text_Name.Text) || temp_detailname.Contains(Text_Name.Text))
+                {
+                    if(text_quantity.Text == "" || Convert.ToInt32(text_quantity.Text) <= temp_quantity)
+                    {
+                        if(text_origin.Text == "" || temp_origin.Contains(text_origin.Text))
+                        {
+                            if(text_vendor.Text == "" || temp_vendor.Contains(text_vendor.Text))
+                            {
+                                if(text_descr.Text == "" || temp_descr.Contains(text_descr.Text))
+                                {
+                                    WeinList.Add(new Wein(temp_barcode, temp_name, temp_detailname, temp_vendor, temp_origin, temp_descr, temp_quantity));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            currentWein = 0;
+            Load_Wine(currentWein);
+        }
+
+        private void Load_Wine(int currentWein)
+        {
+            Text_s_Name.Text = WeinList[currentWein].getName();
+            if (Text_s_Name.Text == null || Text_s_Name.Text == "")
+                Text_s_Name.Text = WeinList[currentWein].getDetailname();
+            text_s_Vendor.Text = WeinList[currentWein].getVendor();
+            text_s_Origin.Text = WeinList[currentWein].getOrigin();
+            text_s_descr.Text = WeinList[currentWein].getDescr();
+            text_s_Quantity.Text = WeinList[currentWein].getQuantity().ToString();
+            text_s_barcode.Text = WeinList[currentWein].getBarcode();
+            text_s_Quantity.Text = WeinList[currentWein].getQuantity().ToString();
+
+            Load_image(WeinList[currentWein].getBarcode());
+            Load_page(currentWein);
+        }
+
+        private void Btn_next_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentWein != WeinList.Count - 1)
+                currentWein++;
+            else
+                currentWein = 0;
+            Load_Wine(currentWein);
+        }
+
+        private void Btn_back_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentWein != 0)
+                currentWein--;
+            else
+                currentWein = WeinList.Count - 1;
+            Load_Wine(currentWein);
+        }
+
+        private void Load_page(int wine_index)
+        {
+            int current_page = wine_index + 1;
+            int max_page = WeinList.Count();
+
+            text_page.Text = current_page.ToString() + "/" + max_page;
+        }
+
+        private void Load_image(string image_name)
+        {
+            FileInfo fInfo = new FileInfo("WeinBilder\\" + image_name + ".jpg");
+            if (fInfo.Exists)
+            {
+                var path = Path.Combine(Environment.CurrentDirectory, "WeinBilder", image_name + ".jpg");
+                var uri = new Uri(path);
+
+                var bitmap = new BitmapImage(uri);
+
+                WineImage.Source = bitmap;
+            }
+        }
     }
+    
 }

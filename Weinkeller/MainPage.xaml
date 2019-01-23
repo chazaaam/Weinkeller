@@ -8,25 +8,24 @@
     x:Class="Weinkeller.MainPage"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <NavigationView x:Name="NavMain" HorizontalAlignment="Center" Height="1080" Margin="0,0,0,0" VerticalAlignment="Center" Width="1920" PaneDisplayMode="Top" SelectionChanged="NavMain_SelectionChanged" Loaded="NavMain_Loaded" ItemInvoked="NavMain_ItemInvoked" IsSettingsVisible="False">
+    <NavigationView x:Name="NavMain" HorizontalAlignment="Center" Height="1080" Margin="0,0,0,0" VerticalAlignment="Center" IsPaneToggleButtonVisible="False" Width="1920" PaneDisplayMode="LeftCompact" SelectionChanged="NavMain_SelectionChanged" Loaded="NavMain_Loaded" ItemInvoked="NavMain_ItemInvoked" IsSettingsVisible="False" RequestedTheme="Dark">
         <NavigationView.MenuItems>
-            <NavigationViewItem Tag="weinkeller" Icon="Home" FontSize="36" Margin="0,0,10,0" >
+            <NavigationViewItem Tag="weinkeller" Icon="Home" FontSize="36" Margin="0,0,0,0" HorizontalAlignment="Left" >
                 <TextBlock Tag="Nav_Weinkeller">Weinkeller</TextBlock>
             </NavigationViewItem>
-            <NavigationViewItem Tag="suchen" Icon="Find" FontSize="36" Margin="0,0,10,0" >
-                <TextBlock Tag="Nav_Durchsuchen">Durchsuchen</TextBlock>
+            <NavigationViewItem Tag="suchen" Icon="Find" FontSize="36" Margin="0,0,0,0" HorizontalAlignment="Left" >
+                <TextBlock Tag="Nav_Durchsuchen"></TextBlock>
             </NavigationViewItem>
-            <NavigationViewItem Tag="add" Icon="Add" FontSize="36" Margin="0,0,10,0">
-                <TextBlock Tag="Nav_Hinzufuegen">Flasche hinzufügen</TextBlock>
+            <NavigationViewItem Tag="add" Icon="Add" FontSize="36" Margin="0,0,0,0" HorizontalAlignment="Left">
+                <TextBlock Tag="Nav_Hinzufuegen"></TextBlock>
             </NavigationViewItem>
-            <NavigationViewItem Margin="0,0,0,0" Width="273"/>
-            <NavigationViewItem Tag="add" Icon="Back" FontSize="36" Margin="0,0,10,0" HorizontalAlignment="Stretch">
-                <TextBlock Tag="Nav_Hinzufuegen">Vorheriger Wein</TextBlock>
+            <NavigationViewItem Tag="add" Icon="Back" FontSize="36" Margin="0,0,0,0" HorizontalAlignment="Left">
+                <TextBlock Tag="Nav_Next"></TextBlock>
             </NavigationViewItem>
-            <NavigationViewItem Tag="add" Icon="Forward" FontSize="24" Margin="0,0,10,0" HorizontalAlignment="Stretch">
-                <TextBlock Tag="Nav_Hinzufuegen">Nächster Wein</TextBlock>
+            <NavigationViewItem Tag="add" Icon="Forward" FontSize="36" Margin="0,0,0,0" HorizontalAlignment="Left">
+                <TextBlock Tag="Nav_Back"></TextBlock>
             </NavigationViewItem>
         </NavigationView.MenuItems>
-        <Frame x:Name="MainFrame"></Frame>
+        <Frame x:Name="MainFrame" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"></Frame>
     </NavigationView>
 </Page>
