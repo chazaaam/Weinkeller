@@ -4,4 +4,14 @@
     <DeviceId>30F105C9-681E-420b-A277-7C086EAD8A4E</DeviceId>
     <UseEmulator>false</UseEmulator>
   </PropertyGroup>
+  <PropertyGroup>
+    <SplashScreenSource>Z:\Shared Folder\weinkeller Logo.png</SplashScreenSource>
+    <AppIconSource>Z:\Shared Folder\weinkeller Logo.png</AppIconSource>
+    <Source>Z:\Shared Folder\weinkeller Logo.png</Source>
+    <SmallTileSource>Z:\Shared Folder\weinkeller Logo.png</SmallTileSource>
+    <MediumTileSource>Z:\Shared Folder\weinkeller Logo.png</MediumTileSource>
+    <WideTileSource>Z:\Shared Folder\weinkeller Logo.png</WideTileSource>
+    <LargeTileSource>Z:\Shared Folder\weinkeller Logo.png</LargeTileSource>
+    <PackageLogoSource>Z:\Shared Folder\weinkeller Logo.png</PackageLogoSource>
+  </PropertyGroup>
 </Project>

@@ -42,7 +42,7 @@ namespace Weinkeller.Views
         BarcodeScanner scanner = null;
         ClaimedBarcodeScanner claimedScanner = null;
 
-        
+        string scanned_barcode = "";
 
         public HinzufuegenPage()
         {
@@ -56,8 +56,9 @@ namespace Weinkeller.Views
 
         private void barcodeLookup()
         {
-           
+            barcode = scanned_barcode;
 
+            ScanningGrid.Visibility = Visibility.Collapsed;
             // Überprüfen ob Barcode bereits vorhanden in eigener Datenbank
             int barcodeID = CheckDataBase(barcode);
 
@@ -146,7 +147,8 @@ namespace Weinkeller.Views
 
                 CreateFile();
                 // Auf WeinSeite wechseln
-                //MainFrame.Navigate(typeof(WeinkellerPage));
+                Show_Message("Datenbankeintrag war bereits vorhanden.\nLagerstand wurde um eins erhöht.", "Bekannter Wein gefunden");
+                this.Frame.Navigate(typeof(WeinkellerPage));
             }
         }
 
@@ -277,7 +279,7 @@ namespace Weinkeller.Views
 
         private async void  Scanner_input()
         {
-            string scanned_barcode = "";
+            
 
             scanner = await DeviceHelpers.GetFirstBarcodeScannerAsync();
 
@@ -362,6 +364,9 @@ namespace Weinkeller.Views
                 string ScenarioOutputScanDataLabel = DataHelpers.GetDataLabelString(args.Report.ScanDataLabel, args.Report.ScanDataType);
                 string ScenarioOutputScanData = DataHelpers.GetDataString(args.Report.ScanData);
                 string ScenarioOutputScanDataType = BarcodeSymbologies.GetName(args.Report.ScanDataType);
+
+                scanned_barcode = ScenarioOutputScanData;
+                barcodeLookup();
             });
         }
 

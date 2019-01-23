@@ -10,20 +10,14 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <NavigationView x:ConnectionId='2' x:Name="NavMain" HorizontalAlignment="Center" Height="1080" Margin="0,0,0,0" VerticalAlignment="Center" IsPaneToggleButtonVisible="False" Width="1920" PaneDisplayMode="LeftCompact"                                                                                                       IsSettingsVisible="False" RequestedTheme="Dark">
         <NavigationView.MenuItems>
-            <NavigationViewItem Tag="weinkeller" Icon="Home" FontSize="36" Margin="0,0,0,0" HorizontalAlignment="Left" >
+            <NavigationViewItem Tag="weinkeller" Icon="Home" FontSize="36" Margin="0,0,0,10" HorizontalAlignment="Left" >
                 <TextBlock Tag="Nav_Weinkeller">Weinkeller</TextBlock>
             </NavigationViewItem>
-            <NavigationViewItem Tag="suchen" Icon="Find" FontSize="36" Margin="0,0,0,0" HorizontalAlignment="Left" >
+            <NavigationViewItem Tag="suchen" Icon="Find" FontSize="36" Margin="0,0,0,10" HorizontalAlignment="Left" >
                 <TextBlock Tag="Nav_Durchsuchen"></TextBlock>
             </NavigationViewItem>
-            <NavigationViewItem Tag="add" Icon="Add" FontSize="36" Margin="0,0,0,0" HorizontalAlignment="Left">
+            <NavigationViewItem Tag="add" Icon="Add" FontSize="36" Margin="0,0,0,10" HorizontalAlignment="Left">
                 <TextBlock Tag="Nav_Hinzufuegen"></TextBlock>
-            </NavigationViewItem>
-            <NavigationViewItem Tag="add" Icon="Back" FontSize="36" Margin="0,0,0,0" HorizontalAlignment="Left">
-                <TextBlock Tag="Nav_Next"></TextBlock>
-            </NavigationViewItem>
-            <NavigationViewItem Tag="add" Icon="Forward" FontSize="36" Margin="0,0,0,0" HorizontalAlignment="Left">
-                <TextBlock Tag="Nav_Back"></TextBlock>
             </NavigationViewItem>
         </NavigationView.MenuItems>
         <Frame x:ConnectionId='3' x:Name="MainFrame" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"></Frame>

@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -41,7 +42,6 @@ namespace Weinkeller.Views
         private void Btn_search_Click(object sender, RoutedEventArgs e)
         {
             Load_data();
-            grid_search.Visibility = Visibility.Visible;
         }
 
         private async void Load_data()
@@ -89,9 +89,13 @@ namespace Weinkeller.Views
                 temp_string = temp_string.Substring(temp_string.IndexOf(";") + 1);
                 temp_quantity = Convert.ToInt32(temp_string);
 
+                bool quantity_check = ((cmb_quantity.SelectedIndex == 0 && (Convert.ToInt32(text_quantity.Text) < temp_quantity)) ||
+                                        (cmb_quantity.SelectedIndex == 1 && (Convert.ToInt32(text_quantity.Text) == temp_quantity)) ||
+                                        (cmb_quantity.SelectedIndex == 2 && (Convert.ToInt32(text_quantity.Text) > temp_quantity)));
+
                 if (Text_Name.Text == "" || temp_name.Contains(Text_Name.Text) || temp_detailname.Contains(Text_Name.Text))
                 {
-                    if(text_quantity.Text == "" || Convert.ToInt32(text_quantity.Text) <= temp_quantity)
+                    if(text_quantity.Text == "" || quantity_check)
                     {
                         if(text_origin.Text == "" || temp_origin.Contains(text_origin.Text))
                         {
@@ -108,7 +112,19 @@ namespace Weinkeller.Views
             }
 
             currentWein = 0;
-            Load_Wine(currentWein);
+            if (WeinList.Count == 0)
+                Show_Message("Keinen Wein gefunden", "Suche fehlgeschlagen");
+            else
+            {
+                Load_Wine(currentWein);
+                grid_search.Visibility = Visibility.Visible;
+            }
+        }
+
+        private async void Show_Message(string Message, string Titel)
+        {
+            var messageCheck = new MessageDialog(Message, Titel);
+            await messageCheck.ShowAsync();
         }
 
         private void Load_Wine(int currentWein)

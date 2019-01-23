@@ -13,8 +13,8 @@
         <Grid x:Name="InfoGrid" HorizontalAlignment="Left" Height="980" VerticalAlignment="Top" Width="1298" Margin="50,50,0,0">
             <TextBlock HorizontalAlignment="Left" Margin="50,-10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Name:" FontFamily="Georgia"/>
             <TextBox x:Name="Text_Name" HorizontalAlignment="Left" Margin="491,-10,0,0" Text="" VerticalAlignment="Top" Width="754" FontSize="36" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" FontWeight="Bold" FontFamily="Georgia"/>
-            <TextBlock HorizontalAlignment="Left" Margin="50,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Minimum auf Lager:" FontFamily="Georgia"/>
-            <TextBox x:Name="text_quantity" HorizontalAlignment="Left" Margin="491,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="" Width="754" FontFamily="Georgia"/>
+            <TextBlock HorizontalAlignment="Left" Margin="50,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Flaschen auf Lager:" FontFamily="Georgia"/>
+            <TextBox x:Name="text_quantity" HorizontalAlignment="Left" Margin="609,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="" Width="636" FontFamily="Georgia"/>
             <TextBlock HorizontalAlignment="Left" Margin="50,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Verkäufer:" FontFamily="Georgia"/>
             <TextBox x:Name="text_vendor" HorizontalAlignment="Left" Margin="491,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="" Width="754" FontFamily="Georgia"/>
             <TextBlock HorizontalAlignment="Left" Margin="50,461,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Herkunft:" FontFamily="Georgia"/>
@@ -29,6 +29,11 @@
                     </LinearGradientBrush>
                 </Rectangle.Fill>
             </Rectangle>
+            <ComboBox x:Name="cmb_quantity" HorizontalAlignment="Left" Margin="491,180,0,0" VerticalAlignment="Top" PlaceholderText="&lt;" FontSize="36" Height="54" Width="101" FontWeight="Bold" FontStyle="Normal" SelectedIndex="0" Padding="35,0,0,10">
+                <ComboBoxItem Content="&gt;"/>
+                <ComboBoxItem Content="="/>
+                <ComboBoxItem Content="&lt;"/>
+            </ComboBox>
         </Grid>
         <Button x:Name="btn_search" Content="Suchen" HorizontalAlignment="Left" Margin="1510,853,0,0" VerticalAlignment="Top" Height="153" Width="313" FontSize="36" Click="Btn_search_Click"/>
         <Grid x:Name="grid_search" HorizontalAlignment="Left" Height="1070" Margin="0,0,0,0" VerticalAlignment="Top" Width="1910" Background="White" Visibility="Collapsed">
