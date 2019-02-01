@@ -1,0 +1,6 @@
+﻿[ResourceMetadata]
+"ResourceId"			"split.language-te"
+"ResourceDimensions"		"language-te-in"
+
+[Files]
+"C:\Users\User\Documents\GitHub\Weinkeller\Weinkeller\obj\x86\Debug\split.language-te.pri"			"resources.pri"

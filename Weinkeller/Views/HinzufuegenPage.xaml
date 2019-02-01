@@ -5,21 +5,28 @@
     xmlns:local="using:Weinkeller.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded" RequestedTheme="Light">
+    mc:Ignorable="d" Loaded="Page_Loaded" RequestedTheme="Light">
+    <Page.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="Black"/>
+            <GradientStop Color="#FF230101" Offset="1"/>
+        </LinearGradientBrush>
+    </Page.Background>
 
     <Grid x:Name="MainGrid" HorizontalAlignment="Center" Height="1080" Margin="0,0,0,0" VerticalAlignment="Center" Width="1920">
-        <Grid x:Name="InfoGrid" HorizontalAlignment="Left" Height="980" VerticalAlignment="Top" Width="1298" Margin="50,50,0,0">
-            <TextBox x:Name="Text_Name" HorizontalAlignment="Left" Margin="50,-10,0,0" Text="_Name_" VerticalAlignment="Top" Width="869" FontSize="36" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" FontWeight="Bold" FontFamily="Georgia"/>
-            <TextBlock x:Name="text_barcode" HorizontalAlignment="Left" Margin="1022,0,0,939" Text="_barcode_" TextWrapping="Wrap" VerticalAlignment="Bottom" FontSize="36" FontFamily="Georgia"/>
-            <TextBlock HorizontalAlignment="Left" Margin="50,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Flaschen auf Lager:" FontFamily="Georgia"/>
-            <TextBox HorizontalAlignment="Left" Margin="476,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="_Anzahl_" Width="754" FontFamily="Georgia"/>
-            <TextBlock HorizontalAlignment="Left" Margin="50,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Verkäufer:" FontFamily="Georgia"/>
-            <TextBox HorizontalAlignment="Left" Margin="476,321,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="_Verkäufer" Width="754" FontFamily="Georgia"/>
-            <TextBlock HorizontalAlignment="Left" Margin="50,461,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Herkunft:" FontFamily="Georgia"/>
-            <TextBox HorizontalAlignment="Left" Margin="476,467,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="_Herkunft_" Width="754" FontFamily="Georgia"/>
-            <TextBlock HorizontalAlignment="Left" Margin="50,602,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Beschreibung:" FontFamily="Georgia"/>
-            <TextBox HorizontalAlignment="Left" Margin="476,614,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="_Beschreibung_" Width="754" FontFamily="Georgia"/>
+        <Grid x:Name="InfoGrid" HorizontalAlignment="Left" Height="980" VerticalAlignment="Top" Width="1298" Margin="50,98,0,0">
+            <TextBox x:Name="Text_Name" HorizontalAlignment="Left" Margin="50,-10,0,0" Text="" VerticalAlignment="Top" Width="869" FontSize="36" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" FontWeight="Bold" FontFamily="Georgia" Background="#99FFFFFF"/>
+            <TextBlock x:Name="text_Barcode" HorizontalAlignment="Left" Margin="979,2,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" FontFamily="Georgia" Width="251" Padding="10,0,6,6" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="50,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Flaschen auf Lager:" FontFamily="Georgia" Foreground="White"/>
+            <TextBox x:Name="text_Type" HorizontalAlignment="Left" Margin="476,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="" FontFamily="Georgia" MinWidth="754" Background="#99FFFFFF"/>
+            <TextBlock HorizontalAlignment="Left" Margin="50,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Flaschentyp:" FontFamily="Georgia" Foreground="White"/>
+            <TextBox x:Name="text_Quantity" HorizontalAlignment="Left" Margin="476,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="" FontFamily="Georgia" MinWidth="754" Background="#99FFFFFF"/>
+            <TextBlock HorizontalAlignment="Left" Margin="50,423,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Verkäufer:" FontFamily="Georgia" Foreground="White"/>
+            <TextBox x:Name="text_Vendor" HorizontalAlignment="Left" Margin="476,423,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="" FontFamily="Georgia" MinWidth="754" Background="#99FFFFFF"/>
+            <TextBlock HorizontalAlignment="Left" Margin="50,572,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Herkunft:" FontFamily="Georgia" Foreground="White"/>
+            <TextBox x:Name="text_Origin" HorizontalAlignment="Left" Margin="476,571,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="" FontFamily="Georgia" MinWidth="754" Background="#99FFFFFF"/>
+            <TextBlock HorizontalAlignment="Left" Margin="50,713,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Beschreibung:" FontFamily="Georgia" Foreground="White"/>
+            <TextBox x:Name="text_Descr" HorizontalAlignment="Left" Margin="476,714,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="" FontFamily="Georgia" MinWidth="754" Background="#99FFFFFF"/>
             <Rectangle HorizontalAlignment="Left" Height="8" Margin="34,116,0,0" VerticalAlignment="Top" Width="1196" StrokeThickness="3">
                 <Rectangle.Fill>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -29,12 +36,12 @@
                 </Rectangle.Fill>
             </Rectangle>
         </Grid>
-        <Button x:Name="btn_save" Content="Speichern" HorizontalAlignment="Left" Margin="1510,853,0,0" VerticalAlignment="Top" Height="153" Width="313" FontSize="36" Click="Btn_save_Click"/>
-        <Button x:Name="btn_scan" Content="Barcode scannen" HorizontalAlignment="Left" Margin="1510,628,0,0" VerticalAlignment="Top" Height="153" Width="313" FontSize="36" Click="Btn_scan_Click"/>
+        <Button x:Name="btn_save" Content="Speichern" HorizontalAlignment="Left" Margin="1510,853,0,0" VerticalAlignment="Top" Height="153" Width="313" FontSize="36" Click="Btn_save_Click" Background="#FF878686" RequestedTheme="Dark" Foreground="Black"/>
+        <Button x:Name="btn_scan" Content="Barcode scannen" HorizontalAlignment="Left" Margin="1510,628,0,0" VerticalAlignment="Top" Height="153" Width="313" FontSize="36" Click="Btn_scan_Click" Background="#FF878686" RequestedTheme="Dark" Foreground="Black"/>
 
-        <Button Content="Test Wein Anlegen&#xD;&#xA;" HorizontalAlignment="Left" Margin="1540,87,0,0" VerticalAlignment="Top" Height="111" Width="253" Click="Button_Click"/>
-        <Grid x:Name="ScanningGrid" HorizontalAlignment="Center" Height="1080" Margin="0,0,0,0" VerticalAlignment="Center" Width="1920" Background="#D8C3C3C3">
-            <TextBlock HorizontalAlignment="Center" Margin="0,435,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="_ScannerStatus_" FontFamily="Georgia"/>
+        <Button Content="Test Wein Anlegen" HorizontalAlignment="Left" Margin="1540,87,0,0" VerticalAlignment="Top" Height="111" Width="253" Click="Button_Click" Background="#FF878686" RequestedTheme="Dark" Foreground="Black"/>
+        <Grid x:Name="ScanningGrid" HorizontalAlignment="Center" Height="1080" Margin="0,0,0,0" VerticalAlignment="Center" Width="1920" Background="#D8C3C3C3" Visibility="Collapsed">
+            <TextBlock x:Name="text_scannedBarcode" HorizontalAlignment="Center" Margin="0,435,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="_ScannerStatus_" FontFamily="Georgia"/>
             <Button x:Name="btn_scanner_stop" Content="Scannen abbrechen" HorizontalAlignment="Center" Margin="0,570,0,0" VerticalAlignment="Top" Height="153" Width="366" FontSize="36" Click="Btn_save_Click" Background="#FF5F5E5E"/>
 
         </Grid>

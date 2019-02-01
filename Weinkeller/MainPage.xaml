@@ -7,8 +7,8 @@
     xmlns:Custom="using:Microsoft.UI.Xaml.Controls"
     x:Class="Weinkeller.MainPage"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <NavigationView x:Name="NavMain" HorizontalAlignment="Center" Height="1080" Margin="0,0,0,0" VerticalAlignment="Center" IsPaneToggleButtonVisible="False" Width="1920" PaneDisplayMode="LeftCompact" SelectionChanged="NavMain_SelectionChanged" Loaded="NavMain_Loaded" ItemInvoked="NavMain_ItemInvoked" IsSettingsVisible="False" RequestedTheme="Dark">
+    Background="Black">
+    <NavigationView x:Name="NavMain" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" IsBackButtonVisible="Collapsed" IsPaneToggleButtonVisible="False" PaneDisplayMode="LeftCompact" SelectionChanged="NavMain_SelectionChanged" Loaded="NavMain_Loaded" ItemInvoked="NavMain_ItemInvoked" IsSettingsVisible="False" RequestedTheme="Dark">
         <NavigationView.MenuItems>
             <NavigationViewItem Tag="weinkeller" Icon="Home" FontSize="36" Margin="0,0,0,10" HorizontalAlignment="Left" >
                 <TextBlock Tag="Nav_Weinkeller">Weinkeller</TextBlock>
@@ -18,6 +18,9 @@
             </NavigationViewItem>
             <NavigationViewItem Tag="add" Icon="Add" FontSize="36" Margin="0,0,0,10" HorizontalAlignment="Left">
                 <TextBlock Tag="Nav_Hinzufuegen"></TextBlock>
+            </NavigationViewItem>
+            <NavigationViewItem Tag="remove" Icon="Remove" FontSize="36" Margin="0,0,0,10" HorizontalAlignment="Left">
+                <TextBlock Tag="Nav_Abziehen"></TextBlock>
             </NavigationViewItem>
         </NavigationView.MenuItems>
         <Frame x:Name="MainFrame" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"></Frame>

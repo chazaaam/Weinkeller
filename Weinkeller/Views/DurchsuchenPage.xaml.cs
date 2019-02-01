@@ -16,18 +16,17 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
-// Die Elementvorlage "Leere Seite" wird unter https://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
 namespace Weinkeller.Views
 {
-    /// <summary>
-    /// Eine leere Seite, die eigenständig verwendet oder zu der innerhalb eines Rahmens navigiert werden kann.
-    /// </summary>
+
     public sealed partial class DurchsuchenPage : Page
     {
         List<Wein> WeinList = new List<Wein>();
 
         int currentWein;
+
+        string barcode;
 
         public DurchsuchenPage()
         {
@@ -52,6 +51,7 @@ namespace Weinkeller.Views
             string temp_vendor;
             string temp_origin;
             string temp_descr;
+            string temp_type;
             int temp_quantity;
 
             string temp_string;
@@ -87,11 +87,26 @@ namespace Weinkeller.Views
                 temp_string = temp_string.Substring(temp_string.IndexOf(";") + 1);
                 temp_descr = temp_string.Substring(0, temp_string.IndexOf(";"));
                 temp_string = temp_string.Substring(temp_string.IndexOf(";") + 1);
+                temp_type = temp_string.Substring(0, temp_string.IndexOf(";"));
+                temp_string = temp_string.Substring(temp_string.IndexOf(";") + 1);
                 temp_quantity = Convert.ToInt32(temp_string);
 
-                bool quantity_check = ((cmb_quantity.SelectedIndex == 0 && (Convert.ToInt32(text_quantity.Text) < temp_quantity)) ||
-                                        (cmb_quantity.SelectedIndex == 1 && (Convert.ToInt32(text_quantity.Text) == temp_quantity)) ||
-                                        (cmb_quantity.SelectedIndex == 2 && (Convert.ToInt32(text_quantity.Text) > temp_quantity)));
+                bool quantity_check = false;
+
+                try
+                {
+                    if (text_quantity.Text != "")
+                    {
+                        quantity_check = ((cmb_quantity.SelectedIndex == 0 && (Convert.ToInt32(text_quantity.Text) < temp_quantity)) ||
+                                                (cmb_quantity.SelectedIndex == 1 && (Convert.ToInt32(text_quantity.Text) == temp_quantity)) ||
+                                                (cmb_quantity.SelectedIndex == 2 && (Convert.ToInt32(text_quantity.Text) > temp_quantity)));
+                    }
+                }catch(Exception ex)
+                {
+                    Show_Message("Anzahl ist keine Zahl\n"+ ex.Message, "Ungültige Eingabe");
+                    return;
+                }
+                
 
                 if (Text_Name.Text == "" || temp_name.Contains(Text_Name.Text) || temp_detailname.Contains(Text_Name.Text))
                 {
@@ -103,13 +118,21 @@ namespace Weinkeller.Views
                             {
                                 if(text_descr.Text == "" || temp_descr.Contains(text_descr.Text))
                                 {
-                                    WeinList.Add(new Wein(temp_barcode, temp_name, temp_detailname, temp_vendor, temp_origin, temp_descr, temp_quantity));
+                                    if (text_type.Text == "" || temp_type.Contains(text_type.Text))
+                                    {
+                                        if (barcode == "" || barcode == null || temp_barcode == barcode)
+                                        {
+                                            WeinList.Add(new Wein(temp_barcode, temp_name, temp_detailname, temp_vendor, temp_origin, temp_descr, temp_type, temp_quantity));
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
                 }
             }
+
+            barcode = "";
 
             currentWein = 0;
             if (WeinList.Count == 0)
@@ -137,6 +160,7 @@ namespace Weinkeller.Views
             text_s_descr.Text = WeinList[currentWein].getDescr();
             text_s_Quantity.Text = WeinList[currentWein].getQuantity().ToString();
             text_s_barcode.Text = WeinList[currentWein].getBarcode();
+            text_s_Type.Text = WeinList[currentWein].getBarcode();
             text_s_Quantity.Text = WeinList[currentWein].getQuantity().ToString();
 
             Load_image(WeinList[currentWein].getBarcode());
@@ -180,6 +204,29 @@ namespace Weinkeller.Views
                 var bitmap = new BitmapImage(uri);
 
                 WineImage.Source = bitmap;
+            }
+        }
+
+        private void Btn_scan_Click(object sender, RoutedEventArgs e)
+        {
+            InputTextDialogAsync("Barcode zum suchen scannen");
+        }
+
+        private async void InputTextDialogAsync(string title)
+        {
+            TextBox inputTextBox = new TextBox();
+            inputTextBox.AcceptsReturn = false;
+            inputTextBox.Height = 32;
+            ContentDialog dialog = new ContentDialog();
+            dialog.Content = inputTextBox;
+            dialog.Title = title;
+            dialog.IsSecondaryButtonEnabled = true;
+            dialog.PrimaryButtonText = "Ok";
+            dialog.SecondaryButtonText = "Cancel";
+            if (await dialog.ShowAsync() == ContentDialogResult.Primary)
+            {
+                barcode = inputTextBox.Text;
+                Load_data();
             }
         }
     }

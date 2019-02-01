@@ -15,6 +15,7 @@ namespace Weinkeller
         public string origin;
         public string descr;
         public int quantity;
+        public string type;
 
         public Wein()
         {
@@ -24,10 +25,11 @@ namespace Weinkeller
             vendor = "";
             origin = "";
             descr = "";
+            type = "";
             quantity = 0;
         }
 
-        public Wein(string e_barcode, string e_name, string e_detailname, string e_vendor, string e_origin, string e_descr, int e_quantity)
+        public Wein(string e_barcode, string e_name, string e_detailname, string e_vendor, string e_origin, string e_descr, string e_type, int e_quantity)
         {
             barcode = e_barcode;
             name = e_name;
@@ -35,10 +37,11 @@ namespace Weinkeller
             vendor = e_vendor;
             origin = e_origin;
             descr = e_descr;
+            type = e_type;
             quantity = e_quantity;
         }
 
-        public void setData(string e_barcode, string e_name, string e_detailname, string e_vendor, string e_origin, string e_descr, int e_quantity)
+        public void setData(string e_barcode, string e_name, string e_detailname, string e_vendor, string e_origin, string e_descr, string e_type, int e_quantity)
         {
             barcode = e_barcode;
             name = e_name;
@@ -46,6 +49,7 @@ namespace Weinkeller
             vendor = e_vendor;
             origin = e_origin;
             descr = e_descr;
+            type = e_type;
             quantity = e_quantity;
         }
 
@@ -77,6 +81,11 @@ namespace Weinkeller
         public string getDescr()
         {
             return descr;
+        }
+
+        public string getTyp()
+        {
+            return type;
         }
 
         public int getQuantity()

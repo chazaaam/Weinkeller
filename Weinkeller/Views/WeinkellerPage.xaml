@@ -6,25 +6,32 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Custom="using:Microsoft.UI.Xaml.Controls"
     x:Class="Weinkeller.Views.WeinkellerPage"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="1030" Loaded="Page_Loaded" RequestedTheme="Light">
+    mc:Ignorable="d" Height="1030" Loaded="Page_Loaded" RequestedTheme="Light">
+    <Page.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="Black"/>
+            <GradientStop Color="#FF230101" Offset="1"/>
+        </LinearGradientBrush>
+    </Page.Background>
 
-    <Grid x:Name="MainGrid" HorizontalAlignment="Center" Height="1080" Margin="0,0,0,0" VerticalAlignment="Center" Width="1920">
-        <Image x:Name="WineImage" HorizontalAlignment="Right" Height="980" Margin="0,50,80,0" VerticalAlignment="Top" Width="480" Source="/Assets/kein-bild-vorhanden.png"/>
+    <Grid x:Name="MainGrid" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center">
+        <Image x:Name="WineImage" HorizontalAlignment="Center" Margin="1300,48,10,0" VerticalAlignment="Top" Source="/Assets/kein-bild-vorhanden.png" MaxWidth="548" FocusVisualPrimaryBrush="Black"/>
         <Grid x:Name="InfoGrid" HorizontalAlignment="Left" Height="980" VerticalAlignment="Top" Width="1298" Margin="50,50,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="477*"/>
                 <RowDefinition Height="13*"/>
             </Grid.RowDefinitions>
-            <TextBlock HorizontalAlignment="Left" Margin="50,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Flaschen auf Lager:" FontFamily="Georgia"/>
-            <TextBlock x:Name="text_Quantity" HorizontalAlignment="Left" Margin="476,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="_Anzahl_" Width="754" FontFamily="Georgia"/>
-            <TextBlock HorizontalAlignment="Left" Margin="50,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Verkäufer:" FontFamily="Georgia"/>
-            <TextBlock x:Name="text_Vendor" HorizontalAlignment="Left" Margin="476,321,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="_Verkäufer" Width="754" FontFamily="Georgia"/>
-            <TextBlock HorizontalAlignment="Left" Margin="50,461,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Herkunft:" FontFamily="Georgia"/>
-            <TextBlock x:Name="text_Origin" HorizontalAlignment="Left" Margin="476,467,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="_Herkunft_" Width="754" FontFamily="Georgia"/>
-            <TextBlock HorizontalAlignment="Left" Margin="50,602,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Beschreibung:" FontFamily="Georgia"/>
-            <TextBlock x:Name="text_descr" HorizontalAlignment="Left" Margin="476,614,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="_Beschreibung_" Width="754" FontFamily="Georgia"/>
-            <Rectangle HorizontalAlignment="Left" Height="8" Margin="34,116,0,0" VerticalAlignment="Top" Width="1240" StrokeThickness="3">
+            <TextBlock HorizontalAlignment="Left" Margin="50,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Flaschen auf Lager:" FontFamily="Georgia" Foreground="White"/>
+            <TextBlock x:Name="text_type" HorizontalAlignment="Left" Margin="476,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Width="754" FontFamily="Georgia" Foreground="White"><Run Text="_Type_"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="50,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Flaschentyp:" FontFamily="Georgia" Foreground="White"/>
+            <TextBlock x:Name="text_Quantity" HorizontalAlignment="Left" Margin="476,297,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="_Anzahl_" Width="754" FontFamily="Georgia" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="50,423,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Verkäufer:" FontFamily="Georgia" Foreground="White"/>
+            <TextBlock x:Name="text_Vendor" HorizontalAlignment="Left" Margin="476,432,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="_Verkäufer" Width="754" FontFamily="Georgia" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="50,572,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Herkunft:" FontFamily="Georgia" Foreground="White"/>
+            <TextBlock x:Name="text_Origin" HorizontalAlignment="Left" Margin="476,578,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="_Herkunft_" Width="754" FontFamily="Georgia" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="50,713,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Text="Beschreibung:" FontFamily="Georgia" Foreground="White"/>
+            <TextBlock x:Name="text_descr" HorizontalAlignment="Left" Margin="476,725,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="_Beschreibung_" Width="754" FontFamily="Georgia" Foreground="White"/>
+            <Rectangle HorizontalAlignment="Left" Height="8" Margin="34,116,0,0" VerticalAlignment="Top" Width="1214" StrokeThickness="3">
                 <Rectangle.Fill>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black"/>
@@ -32,11 +39,31 @@
                     </LinearGradientBrush>
                 </Rectangle.Fill>
             </Rectangle>
-            <TextBlock x:Name="text_barcode" HorizontalAlignment="Left" Margin="1022,0,0,0" Text="_barcode_" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" FontFamily="Georgia"/>
-            <TextBlock x:Name="Text_Name" HorizontalAlignment="Left" Margin="50,-13,0,0" Text="_Name_" VerticalAlignment="Top" FontSize="48" TextDecorations="Underline" FontWeight="Bold" MaxWidth="869" LineStackingStrategy="BaselineToBaseline" TextWrapping="Wrap" FontFamily="Georgia"/>
+            <TextBlock x:Name="text_barcode" HorizontalAlignment="Left" Margin="980,0,0,0" Text="_barcode_" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" FontFamily="Georgia" Foreground="White"/>
+            <TextBlock x:Name="Text_Name" HorizontalAlignment="Left" Margin="50,-13,0,0" Text="_Name_" VerticalAlignment="Top" FontSize="48" TextDecorations="Underline" FontWeight="Bold" MaxWidth="869" LineStackingStrategy="BaselineToBaseline" TextWrapping="Wrap" FontFamily="Georgia" Foreground="White"/>
         </Grid>
-        <TextBlock x:Name="text_page" HorizontalAlignment="Center" Margin="0,990,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24"/>
-        <Button x:Name="btn_back" Content="&lt;" HorizontalAlignment="Left" Margin="12,940,0,0" VerticalAlignment="Top" FontSize="72" Click="Btn_back_Click"/>
-        <Button x:Name="btn_next" Content="&gt;" HorizontalAlignment="Left" Margin="1850,940,0,0" VerticalAlignment="Top" FontSize="72" Click="Btn_next_Click"/>
+        <TextBlock x:Name="text_page" HorizontalAlignment="Center" Margin="0,0,0,10" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Bottom" FontSize="24" Foreground="White"/>
+        <Button x:Name="btn_back" Content="" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Stretch" FontSize="72" Click="Btn_back_Click" Background="#00939393" Width="950" Opacity="0" BorderThickness="0,0,0,0" ManipulationMode="None" Visibility="Visible"/>
+        <Button x:Name="btn_next" Content="" HorizontalAlignment="Left" Margin="955,0,0,0" VerticalAlignment="Stretch" FontSize="72" Click="Btn_next_Click" Background="#00939393" Width="946" FocusVisualPrimaryBrush="#00000000" Foreground="#00000000" FocusVisualSecondaryBrush="Transparent" Opacity="0" BorderThickness="0,0,0,0" ManipulationMode="None"/>
+        <Grid x:Name="grid_empty" Visibility="Collapsed">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FF230101" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <TextBlock HorizontalAlignment="Center" Margin="0,400,0,0" Text="Der Weinkeller ist leer" VerticalAlignment="Top" FontSize="48" TextDecorations="Underline" FontWeight="Bold" MaxWidth="869" LineStackingStrategy="BaselineToBaseline" TextWrapping="Wrap" FontFamily="Georgia" Foreground="White" TextAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Center" Margin="0,498,0,0" Text="&#x1F641;" VerticalAlignment="Top" FontSize="48" MaxWidth="869" LineStackingStrategy="BaselineToBaseline" TextWrapping="Wrap" FontFamily="Georgia" Foreground="White" TextAlignment="Center" FontWeight="Bold"/>
+        </Grid>
+        <Grid>
+            <TextBlock Name="SwipeableTextBlock" 
+               HorizontalAlignment="Stretch"
+               VerticalAlignment="Stretch"
+               TextAlignment="Center" 
+               FontSize="65" FontWeight="Light"
+               ManipulationMode="TranslateX,TranslateInertia,System" 
+               ManipulationDelta="SwipeableTextBlock_ManipulationDelta"
+               ManipulationCompleted="SwipeableTextBlock_ManipulationCompleted" DoubleTapped="SwipeableTextBlock_DoubleTapped"/>
+        </Grid>
     </Grid>
 </Page>
